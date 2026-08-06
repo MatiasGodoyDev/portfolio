@@ -1,0 +1,226 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+}
+
+/* Variables para el modo claro */
+body.light-mode {
+    --bg-color: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --accent: #000000;
+    --accent-hover: #0369a1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background-color: var(--card-bg);
+    border: 2px solid var(--accent);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+
+header p {
+    color: var(--text-secondary);
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 1.5rem;
+    max-width: 95%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+/* Tarjetas de proyectos */
+main > div {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+}
+
+main > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+main > div > img {
+    width: 100%;
+    height: 180px;
+    background-color: #334155;
+    object-fit: cover;
+}
+
+/* Contenido interno de la tarjeta */
+main > div > div {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+main > div > div > h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    min-height: 3.5rem;
+}
+
+main > div > div > p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+     min-height: 5.5rem; 
+   
+}
+
+/* Contenedor de etiquetas */
+main > div > div > div {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: auto;   
+    min-height: 4.2rem; 
+    align-content: flex-start;
+}
+
+main > div > div > div > span {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Enlace */
+main > div > div > a {
+    text-align: center;
+    background-color: var(--accent);
+    color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 6px;
+    display: block;
+    width: 100%;
+    margin-top: auto;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+main > div > div > a:hover {
+    background-color: var(--accent-hover);
+}
+
+
+
+.btn-leer-mas {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit; 
+  font-size: inherit;   
+  cursor: pointer;     
+  /* 2. Estilo de enlace de texto */
+  color: #2563eb;      
+  display: inline;      
+  margin-left: 4px;     
+}
+
+/* Efecto sutil al pasar el cursor */
+.btn-leer-mas:hover {
+  color: #1d4ed8;       
+  text-decoration: underline; 
+}
+
+@media (max-width: 1280px) {
+    main {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1.2rem;
+    }
+    
+    body {
+        padding: 1.5rem; 
+    }
+}
+
+/* 2. Para Tablets en vertical */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem; /* Achica el título principal */
+    }
+    
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem; /* Acomoda el botón de modo oscuro */
+    }
+}
+
+/* 3. Para Celulares (Cualquier tamaño de teléfono) */
+@media (max-width: 600px) {
+    main {
+        /* Todo el contenido se apila en 1 sola columna vertical */
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+
+    body {
+        padding: 1rem; /* Margen mínimo para aprovechar la pantalla del celular */
+    }
+
+    .tarjeta-proyecto > img {
+        height: 160px; /* Le da un poco más de altura a la foto en celulares */
+    }
+}
